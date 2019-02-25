@@ -1,6 +1,7 @@
 package br.com.caelum.financas.teste;
 
 import br.com.caelum.financas.modelo.Conta;
+import br.com.caelum.financas.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,14 +20,15 @@ public class TesteConta {
         conta.setAgencia("123");
         conta.setNumero("456");
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("financas");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = new JPAUtil().getEntityManager();
 
+        //inicia a transação
         em.getTransaction().begin();
+        //persiste a conta
         em.persist(conta);
+        //finalina
         em.getTransaction().commit();
-
+        //fecha a entiryManager
         em.close();
-        emf.close();
     }
 }

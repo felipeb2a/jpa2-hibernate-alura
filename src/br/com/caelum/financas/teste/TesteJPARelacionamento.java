@@ -22,7 +22,7 @@ public class TesteJPARelacionamento {
 		Movimentacao movimentacao = new Movimentacao();
 		movimentacao.setData(Calendar.getInstance());
 		movimentacao.setDescricao("churrascaria");
-		movimentacao.setTipo(TipoMovimentacao.SAIDA);
+		movimentacao.setTipoMovimentacao(TipoMovimentacao.SAIDA);
 		movimentacao.setValor(new BigDecimal("200.0"));
 		
 		movimentacao.setConta(conta);

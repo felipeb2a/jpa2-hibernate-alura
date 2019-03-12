@@ -1,5 +1,6 @@
 package br.com.caelum.financas.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class Conta {
     private String agencia;
     private String numero;
 
-    public Integer getId() {
+	public Integer getId() {
         return id;
     }
 

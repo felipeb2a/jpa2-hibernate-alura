@@ -3,6 +3,7 @@ package br.com.caelum.financas.teste;
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.util.JPAUtil;
 
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,11 +16,11 @@ public class TesteConta {
     public static void main(String[] args) {
 
         Conta conta = new Conta();
-        conta.setTitular("Leonardo");
-        conta.setBanco("Caixa Economica");
+        conta.setTitular("João");
+        conta.setBanco("Banco do Brasil");
         conta.setAgencia("123");
-        conta.setNumero("456");
-
+        conta.setNumero("456");        
+        
         EntityManager em = new JPAUtil().getEntityManager();
 
         //inicia a transação

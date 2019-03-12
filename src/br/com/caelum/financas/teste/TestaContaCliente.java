@@ -14,17 +14,27 @@ public class TestaContaCliente {
 		cliente.setEndereco("Rua Fulano, 123");
 		cliente.setProfissao("Professor");
 		
+		Cliente cliente2 = new Cliente();
+		cliente2.setNome("Maria dos Santos");
+		cliente2.setEndereco("Rua Fulano, 123");
+		cliente2.setProfissao("Professora");
+		
 		Conta conta = new Conta();
 		conta.setId(2);
 		
+		Conta conta2 = new Conta();
+		conta2.setId(1);
+		
 		cliente.setConta(conta);
+		cliente2.setConta(conta2);
 		
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
 		
 		em.persist(cliente);
-		
+		em.persist(cliente2);
 		em.getTransaction().commit();
+		em.close();
 		
 	}
 	

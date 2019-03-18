@@ -15,7 +15,7 @@ public class TesteMovimentacoesDasContas {
 		em.getTransaction().begin();
 		
 //		join fetch realiza apenas um select trazendo as movimentacoes junto com a conta
-		String jpql = "select c from Conta c join fetch c.movimentacoes";
+		String jpql = "select distinct c from Conta c left join fetch c.movimentacoes";
 		
 		Query query = em.createQuery(jpql);
 		

@@ -23,14 +23,25 @@ public class TestesFuncoesJPQL {
 		Conta conta = new Conta();
 		conta.setId(2);
 
-		MovimentacaoDao dao = new MovimentacaoDao(em);
+//		MovimentacaoDao dao = new MovimentacaoDao(em);
+		//namedQuery
+		TypedQuery<Double> typeQuery = em.createNamedQuery("MediasPorDiaETipo", Double.class);
+		
+		typeQuery.setParameter("pConta", conta);
+		typeQuery.setParameter("pTipoMovimentacao", TipoMovimentacao.SAIDA);
+		
+		List<Double> medias = typeQuery.getResultList();
+		
+		for(Double media : medias) {
+			System.out.println("A média é: " + media);
+		}
 //		dao.setEm(em);
-		List<Double> medias = dao.getMediasPorDiaETipo(TipoMovimentacao.SAIDA, conta);
+//		List<Double> medias = dao.getMediasPorDiaETipo(TipoMovimentacao.SAIDA, conta);
 
 //		System.out.println("A soma é : "+ soma);
-		System.out.println("A média é : "+ medias.get(0));
-		System.out.println("A média é : "+ medias.get(1));
-		System.out.println("A média é : "+ medias.get(2));
+//		System.out.println("A média é : "+ medias.get(0));
+//		System.out.println("A média é : "+ medias.get(1));
+//		System.out.println("A média é : "+ medias.get(2));
 		em.getTransaction().commit();
 		em.close();
 	}
